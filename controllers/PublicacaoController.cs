@@ -11,6 +11,7 @@ namespace Blog.Controllers;
         private readonly PublicacaoService _publicacaoService;
         private readonly SessaoUsuario _sessaoUsuario;
 
+
         public PublicacaoController(PublicacaoView view, PublicacaoService publicacaoService, SessaoUsuario sessaoUsuario)
         {
             _view = view;
@@ -74,4 +75,5 @@ namespace Blog.Controllers;
             var publicacoes = _publicacaoService.ListarPublicacoes();
             _view.ExibirPublicacoes(publicacoes);
         }
+
     }

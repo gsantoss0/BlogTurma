@@ -14,9 +14,12 @@ class Program
             MenuView menuView = new MenuView();
             AutenticacaoView autenticacaoView = new AutenticacaoView();
             PublicacaoView publicacaoView = new PublicacaoView();
-
+            
+            ComentarioService comentarioService = new ComentarioService(conexao, sessao);
+            
             AutenticacaoController autController = new AutenticacaoController(autenticacaoView, usuarioService, sessao);
             PublicacaoController pubController = new PublicacaoController(publicacaoView, publicacaoService, sessao);
+            
 
 
             while (true)
@@ -61,7 +64,7 @@ class Program
                         pubController.Excluir();
                         break;
                     case "8":
-                        //porfazer 
+                        
                         break;
                     case "9":
                         autController.Sair();

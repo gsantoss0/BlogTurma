@@ -5,16 +5,16 @@ using MySql.Data.MySqlClient;
 namespace Blog.Services;
 public class PublicacaoService
 {
-    readonly Conexao _Conexao;
+    readonly Conexao _conexao;
 
     public PublicacaoService(Conexao connection)
     {
-        _Conexao = connection;
+        _conexao = connection;
     }
 
     public bool Criar(string conteudo, int idUsuario)
     {
-        using (var connection = _Conexao.CriarConexao())
+        using (var connection = _conexao.CriarConexao())
         {
             connection.Open();
 
@@ -36,7 +36,7 @@ public class PublicacaoService
     {
         List<Publicacao> publicacoes = new List<Publicacao>();
 
-        using (var connection = _Conexao.CriarConexao())
+        using (var connection = _conexao.CriarConexao())
         {
             connection.Open();  
 
@@ -68,11 +68,10 @@ public class PublicacaoService
 
     public bool Excluir(int idPublicacao, int idUsuario)
 {
-    using (var connection = _Conexao.CriarConexao())
+    using (var connection = _conexao.CriarConexao())
     {
         connection.Open();
 
-        // Só apaga se o ID da publicação bater com o ID do utilizador logado
         string query = "DELETE FROM Publicacao WHERE id_publicacao = @idPublicacao AND id_usuario = @idUsuario";
 
         using (MySqlCommand command = new MySqlCommand(query, connection))
@@ -85,10 +84,10 @@ public class PublicacaoService
         }
     }
 }
+
     //Funcao publica ListarPublicacoes que
     //abrir a conexao
     //Criar o statement para rodar no banco
     //executar a query
     //retornar a lista de Publicacao
-    
 }
